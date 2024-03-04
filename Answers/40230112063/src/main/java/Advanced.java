@@ -26,7 +26,7 @@ public class Advanced {
         }
 
 
-        sentence=" ".concat(arrStr[0]);
+        sentence=arrStr[0];
 
         for (int i=1 ; i<arrStr.length ; i++)
         {
@@ -91,7 +91,39 @@ public class Advanced {
      * @return if word contains Consecutive repeated letters, one of the repeated letters should be omitted
      */
     public String doubleChar(String word) {
-        return null;
+
+        String[] arrStr = word.split("");
+
+        int arrSize = arrStr.length;
+
+
+        int i=1;
+        boolean flag=true;
+        while(!Objects.equals(arrStr[i],null))
+        {
+            for(int j=i-1 ; j>=0 ; j--)
+            {
+                if(Objects.equals(arrStr[i],arrStr[j]))
+                {
+                    for(int k=i ; k<arrSize-1 ; k++)
+                        arrStr[k]=arrStr[k+1];
+                    arrStr[arrSize-1]=null;
+
+                    flag=false;
+                    break;
+                }
+                else
+                    flag=true;
+            }
+            if(flag)
+                i++;
+        }
+
+        word="";
+        for(i=0 ; !Objects.equals(arrStr[i],null);i++)
+            word=word.concat(arrStr[i]);
+
+        return word;
     }
 }
 
