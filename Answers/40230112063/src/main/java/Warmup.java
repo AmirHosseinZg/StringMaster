@@ -22,8 +22,35 @@ public class Warmup {
      * @param searchForEven is a boolean entry
      * @return if searchForEven is true ? return the number of even numbers : return the number of odd numbers
      */
-    public int oddEvenCounter(String number, boolean searchForEven) {
-        return -1;
+        public int oddEvenCounter(String number, boolean searchForEven) {
+
+            int result=0;
+            int sizeStr = number.length();
+            int tmp;
+
+            if(searchForEven) // bool = true = Even numbers
+            {
+                for(int i=0 ; i<sizeStr ; i++)
+                {
+                    tmp = (int) number.charAt(i) - 48 ;
+
+                    if(tmp % 2 == 0)
+                        result++;
+                }
+            }
+
+            else // bool = False = Odd numbers
+            {
+                for(int i=0 ; i<sizeStr ; i++)
+                {
+                    tmp = (int) number.charAt(i) - 48 ;
+
+                    if(tmp % 2 != 0)
+                        result++;
+                }
+            }
+
+            return result;
     }
 
     /**
