@@ -96,6 +96,7 @@ public class Advanced {
 
         int arrSize = arrStr.length;
 
+        int branch;
 
         int i=1;
         boolean flag=true;
