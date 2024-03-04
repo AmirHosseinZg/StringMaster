@@ -92,38 +92,49 @@ public class Advanced {
      */
     public String doubleChar(String word) {
 
-        String[] arrStr = word.split("");
+        String[] mainWord = word.split(" ");
 
-        int arrSize = arrStr.length;
-
-        int branch;
-
-        int i=1;
-        boolean flag=true;
-        while(!Objects.equals(arrStr[i],null))
+        for(int iterator=0 ; iterator<mainWord.length ; iterator++)
         {
-            for(int j=i-1 ; j>=0 ; j--)
-            {
-                if(Objects.equals(arrStr[i],arrStr[j]))
-                {
-                    for(int k=i ; k<arrSize-1 ; k++)
-                        arrStr[k]=arrStr[k+1];
-                    arrStr[arrSize-1]=null;
+            String[] arrStr = mainWord[iterator].split("");
 
-                    flag=false;
-                    break;
+            int arrSize = arrStr.length;
+
+            int i=1;
+            boolean flag=true;
+
+            while(!Objects.equals(arrStr[i],null))
+            {
+                for(int j=i-1 ; j>=0 ; j--)
+                {
+                    if(Objects.equals(arrStr[i],arrStr[j]))
+                    {
+                        for(int k=i ; k<arrSize-1 ; k++)
+                            arrStr[k]=arrStr[k+1];
+                        arrStr[arrSize-1]=null;
+
+                        flag=false;
+                        break;
+                    }
+                    else
+                        flag=true;
                 }
-                else
-                    flag=true;
+                if(flag)
+                    i++;
             }
-            if(flag)
-                i++;
+
+            mainWord[iterator]="";
+            for(i=0 ; !Objects.equals(arrStr[i],null);i++)
+                mainWord[iterator]=mainWord[iterator].concat(arrStr[i]);
         }
 
-        word="";
-        for(i=0 ; !Objects.equals(arrStr[i],null);i++)
-            word=word.concat(arrStr[i]);
+        word=mainWord[0];
 
+        for(int i=1 ; i<mainWord.length ; i++)
+        {
+            word=word.concat(" ");
+            word=word.concat(mainWord[i]);
+        }
         return word;
     }
 }
